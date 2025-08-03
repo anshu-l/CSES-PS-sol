@@ -32,37 +32,37 @@ void solve() {
     ll sumsq = sum * sum;
 
     ll diff = abs(r1 - r2);
-    ll diffsq = diff * diff;
+    ll diffsq =diff*diff;
 
-    cout << fixed << setprecision(20);
+    cout << fixed<<setprecision(20);
 
     // agar same sizw h toh
-    if (x1 == x2 && y1 == y2 && r1 == r2) {
-        cout << PI * r1 * r1 << endl;
+    if (x1 == x2&& y1 == y2 && r1 == r2) {
+        cout<<PI*r1 * r1<<endl;
     }
     // One circle is fully inside the other
-    else if (dist <= diffsq) {
-        cout << PI * min(r1, r2) * min(r1, r2) << endl;
+    else if(dist <= diffsq) {
+        cout <<PI* min(r1, r2)* min(r1, r2) << endl;
     }
     //no intersection
     else if (dist > sumsq) {
-        cout << 0.0 << endl;
+        cout <<0.0<<endl;
     }
     //Circles touch externally
     else if (dist == sumsq) {
-        cout << 0.0 << endl;
+        cout <<0.0<<endl;
     }
     // Case 5: Circles touch internally
     else if (dist == diffsq) {
-        cout << min(PI * r1 * r1, PI * r2 * r2) << endl;
+        cout <<min(PI * r1 * r1, PI * r2 * r2) << endl;
     }
     // Case 6: Circles intersect at two points
     else {
         // 1sector +2nd sector - area of kite
     long double d = sqrtl(dist);
-    long double r1d = r1, r2d = r2;
+    long double r1d=r1, r2d=r2;
 
-    long double angle1 = 2 * acosl((dist + r1d * r1d - r2d * r2d) / (2 * d * r1d));
+    long double angle1 = 2 * acosl((dist +r1d* r1d - r2d * r2d) / (2 * d * r1d));
     long double angle2 = 2 * acosl((dist + r2d * r2d - r1d * r1d) / (2 * d * r2d));
 
     long double area1 = 0.5 * r1d * r1d * (angle1 - sinl(angle1));

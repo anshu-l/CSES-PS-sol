@@ -20,21 +20,65 @@ using namespace std;
 #define endl "\n"
 
 void solve() {
-    int n;
+    string n ;
     cin>>n;
-    cout<<n;
-    while(n>0){
-        if(n%2==0){
-            n=n/2;
 
-        }
+    // hashmap 2 case to allow -> if all feq %2==0 other is if any one of the freq is odd
+
+    vi arr(26);
+    for(auto it: n){
+        arr[it-'A']++; 
+    }   
+    // we have to built the string also like batana padega ohhcha
+    // xor wali approach aayi achanak se but we have to build the entire string so woh toh hard rahega 
+
+    int odd=0;
+    int even=0;
+    for(int i =0; i<26; i++){
+        if(arr[i]%2==0) even++;
         else{
-            n=3*n+1;
+            // odd++;
+            odd = i;
         }
-        cout<<" "<<n;
 
     }
+
+    if(odd>1){
+        cout<<"NO SOLUTION"<<endl;
+    }
     
+    // built the string 
+    // aaa         -              aaa
+//make this     add this
+            //  if odd exist       just rev and insert the first part 
+
+
+
+    
+
+    
+    string left="";
+    for(int i=0; i<26; i++){
+        int half = arr[i] / 2;// aadhe hi use ho aage 
+
+            // for (int j = 0; j < half; j++) {
+            //     left += (char)('A' + i);
+            // }
+            for(int j=0; j<half; j++){
+                left+=('A'+i);
+            }
+    }
+    string middle="";
+    if(odd==1){
+        middle+=('A'+odd);
+    }
+
+    string right = left;
+    reverse(right.begin(), right.end());
+    
+    cout<<left+middle+right;
+
+
 }
 
 int main() {
